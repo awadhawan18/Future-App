@@ -1,4 +1,4 @@
-package com.example.alumnicellsystem;
+package com.futureapp;
 
 import org.junit.Test;
 
