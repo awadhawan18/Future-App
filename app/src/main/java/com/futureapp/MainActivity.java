@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        startActivity(new Intent(this, MapsActivity.class));
+        //startActivity(new Intent(this, MapsActivity.class));
         setContentView(R.layout.app_bar_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Nation Grid");
