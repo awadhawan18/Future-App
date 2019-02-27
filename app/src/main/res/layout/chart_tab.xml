@@ -3,11 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChartTab">
+    tools:context=".MainActivity">
 
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/pie_chart"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp" />
+        android:layout_height="match_parent">
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pie_chart"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_centerVertical="true" />
+
+    </RelativeLayout>
 
 </FrameLayout>

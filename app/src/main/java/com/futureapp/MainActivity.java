@@ -1,11 +1,21 @@
 package com.futureapp;
 
-import android.net.Uri;
+import android.app.DatePickerDialog;
 import android.support.v4.view.ViewPager;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.CalendarView;
+import android.widget.DatePicker;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         });
         setupViewPager(viewPager);
 
+
     }
 
 
@@ -70,5 +81,60 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         //super.onBackPressed();
         MainActivity.this.finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.toolbar_calender:
+
+                final Calendar myCalendar = Calendar.getInstance();
+
+                DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                          int dayOfMonth) {
+                        myCalendar.set(Calendar.YEAR, year);
+                        myCalendar.set(Calendar.MONTH, monthOfYear);
+                        myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        updateMenuDate(item, myCalendar);
+                    }
+
+                };
+
+                new DatePickerDialog(MainActivity.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    private void updateMenuDate(MenuItem item, Calendar myCalendar) {
+        String myFormat = "dd/MM/yy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+//        Log.v("Today date", Calendar.getInstance().getTime().toString());
+//        Log.v("Picked date", myCalendar.getTime().toString());
+
+        if (sdf.format(myCalendar.getTime()).equals(sdf.format(Calendar.getInstance().getTime()))) {
+            item.setTitle("Today");
+        } else {
+            item.setTitle(sdf.format(myCalendar.getTime()));
+        }
+
     }
 }
