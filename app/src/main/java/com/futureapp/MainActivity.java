@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
+import com.google.android.gms.maps.SupportMapFragment;
+
 import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
@@ -54,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         setupViewPager(viewPager);
-
     }
 
 
@@ -68,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(hourTab, "Hour View");
         adapter.addFragment(plantTab, "Plants");
         adapter.addFragment(mapTab, "Map View");
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        // This is causing an error
+        mapFragment.getMapAsync(mapTab);
         viewPager.setAdapter(adapter);
     }
 
