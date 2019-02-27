@@ -1,5 +1,7 @@
 package com.futureapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.app.DatePickerDialog;
 import android.support.v4.view.ViewPager;
 import android.support.design.widget.TabLayout;
@@ -17,6 +19,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import com.google.android.gms.maps.SupportMapFragment;
+
+import timber.log.Timber;
+
 public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
@@ -29,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //startActivity(new Intent(this, MapsActivity.class));
+        Timber.plant();
         setContentView(R.layout.app_bar_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Nation Grid");
@@ -74,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(hourTab, "Hour View");
         adapter.addFragment(plantTab, "Plants");
         adapter.addFragment(mapTab, "Map View");
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        // This is causing an error
+        mapFragment.getMapAsync(mapTab);
         viewPager.setAdapter(adapter);
     }
 
