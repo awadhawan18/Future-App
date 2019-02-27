@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
+import timber.log.Timber;
+
 public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //startActivity(new Intent(this, MapsActivity.class));
+        Timber.plant();
         setContentView(R.layout.app_bar_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Nation Grid");
