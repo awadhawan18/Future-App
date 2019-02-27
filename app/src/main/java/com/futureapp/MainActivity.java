@@ -1,11 +1,16 @@
 package com.futureapp;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.view.ViewPager;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+
+import com.google.android.gms.maps.SupportMapFragment;
+
+import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //startActivity(new Intent(this, MapsActivity.class));
+        Timber.plant();
         setContentView(R.layout.app_bar_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Nation Grid");
@@ -49,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         setupViewPager(viewPager);
-
     }
 
 
@@ -63,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(hourTab, "Hour View");
         adapter.addFragment(plantTab, "Plants");
         adapter.addFragment(mapTab, "Map View");
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        // This is causing an error
+        mapFragment.getMapAsync(mapTab);
         viewPager.setAdapter(adapter);
     }
 
