@@ -141,10 +141,12 @@ public class ChartTab extends Fragment {
         Legend l = pieChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+        l.setForm(Legend.LegendForm.CIRCLE);
         l.setOrientation(Legend.LegendOrientation.VERTICAL);
         l.setDrawInside(true);
         l.setTextSize(12f);
 
         pieChart.invalidate();
     }
+
 }

@@ -3,17 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_marginBottom="?attr/actionBarSize"
+    tools:context=".ChartTab">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?attr/actionBarSize">
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pie_chart"
             android:layout_width="match_parent"
             android:layout_height="350dp"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="?attr/actionBarSize" />
 
     </RelativeLayout>
 

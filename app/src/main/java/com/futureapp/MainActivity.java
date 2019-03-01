@@ -11,8 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 
 import java.text.SimpleDateFormat;
@@ -82,10 +80,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(hourTab, "Hour View");
         adapter.addFragment(plantTab, "Plants");
         adapter.addFragment(mapTab, "Map View");
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        // This is causing an error
-        mapFragment.getMapAsync(mapTab);
+
         viewPager.setAdapter(adapter);
     }
 
