@@ -2,7 +2,9 @@ package com.futureapp;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.ColorMatrix;
 import android.support.annotation.NonNull;
+import android.support.design.card.MaterialCardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +37,8 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         holder.name.setText(plant.name);
         holder.capacity.setText(plant.capacity);
 
-        //holder.plant_view.setBackgroundColor(Integer.parseInt("ffff00", 16));
+        //holder.plant_card.setBackgroundColor(100);
+        holder.plant_view.setBackgroundColor(0xFF000000 + position*0xff110000);
     }
 
     @Override
@@ -46,6 +49,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
     static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView name;
         private TextView capacity;
+        private MaterialCardView plant_card;
         private LinearLayout plant_view;
 
         MyViewHolder(View itemView) {
@@ -53,6 +57,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
             name = itemView.findViewById(R.id.plant_name_text_view);
             capacity = itemView.findViewById(R.id.plant_capacity_text_view);
             plant_view = itemView.findViewById(R.id.plant_view);
+            plant_card = itemView.findViewById(R.id.plant_card);
         }
     }
 }
