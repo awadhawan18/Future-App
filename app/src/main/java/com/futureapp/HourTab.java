@@ -129,9 +129,12 @@ public class HourTab extends Fragment {
         hourValues.add(new HashMap<String, String>());
         hourValues.add(new HashMap<String, String>());
         hourValues.add(new HashMap<String, String>());
+        hourValues.add(new HashMap<String, String>());
+        hourValues.add(new HashMap<String, String>());
+        hourValues.add(new HashMap<String, String>());
 
         HourViewAdapter adapter = new HourViewAdapter(getContext(), hourValues);
-        RecyclerView myView = getView().findViewById(R.id.recyclerview);
+        RecyclerView myView = getView().findViewById(R.id.hour_view_list);
         myView.setHasFixedSize(true);
         myView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());

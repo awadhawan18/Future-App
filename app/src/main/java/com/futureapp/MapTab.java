@@ -1,24 +1,28 @@
 package com.futureapp;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
 import timber.log.Timber;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class MapTab extends Fragment implements OnMapReadyCallback {
     private GoogleMap mMap;
@@ -39,7 +43,6 @@ public class MapTab extends Fragment implements OnMapReadyCallback {
     public void onAttach(Context context) {
         super.onAttach(context);
         // Not reached
-        Toast.makeText(getActivity().getApplicationContext(), "onAttach()", Toast.LENGTH_SHORT).show();
         /*if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
@@ -59,10 +62,23 @@ public class MapTab extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         // Not reached
-        Toast.makeText(getActivity().getApplicationContext(), "map ready", Toast.LENGTH_SHORT).show();
-        mMap = googleMap;
-        Timber.i("mMap = " + mMap);
 
+        try {
+            // Customise the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            boolean success = googleMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            getActivity().getApplicationContext(), R.raw.style_json));
+
+            if (!success) {
+                Timber.i(TAG + "Style parsing failed.");
+            }
+        } catch (Resources.NotFoundException e) {
+            Timber.i(TAG + "Can't find style. Error: " + e);
+        }
+
+        Timber.i("mMap = " + mMap);
+        mMap = googleMap;
         // Move the camera to India.
         /*LatLng india = new LatLng(28.7, 78.9);
         googleMap.addMarker(new MarkerOptions().position(india)
@@ -109,7 +125,7 @@ public class MapTab extends Fragment implements OnMapReadyCallback {
 
         LatLng india = new LatLng(20.5937, 78.9629);
 
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(india, 4.5f));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(india, 5f));
 
 
     }

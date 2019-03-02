@@ -1,14 +1,11 @@
 package com.futureapp;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.app.DatePickerDialog;
-import android.support.v4.view.ViewPager;
-import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.DatePicker;
@@ -16,8 +13,6 @@ import android.widget.DatePicker;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
-import com.google.android.gms.maps.SupportMapFragment;
 
 import timber.log.Timber;
 
@@ -33,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //startActivity(new Intent(this, MapsActivity.class));
+
         Timber.plant();
         setContentView(R.layout.app_bar_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -134,8 +129,6 @@ public class MainActivity extends AppCompatActivity {
         String myFormat = "dd/MM/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-//        Log.v("Today date", Calendar.getInstance().getTime().toString());
-//        Log.v("Picked date", myCalendar.getTime().toString());
 
         if (sdf.format(myCalendar.getTime()).equals(sdf.format(Calendar.getInstance().getTime()))) {
             item.setTitle("Today");
@@ -144,4 +137,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 }
