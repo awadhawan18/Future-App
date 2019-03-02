@@ -7,10 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
-
 
 public class HourViewAdapter extends RecyclerView.Adapter<HourViewAdapter.MyViewHolder> {
     private ArrayList<HashMap<String, String>> hourValues;
@@ -32,7 +30,6 @@ public class HourViewAdapter extends RecyclerView.Adapter<HourViewAdapter.MyView
         HashMap<String, String> temp = hourValues.get(position);
     }
 
-
     @Override
     public int getItemCount() {
         return hourValues.size();
@@ -40,13 +37,12 @@ public class HourViewAdapter extends RecyclerView.Adapter<HourViewAdapter.MyView
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView hour;
-        private TextView capacity;
+        private TextView total;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             hour = itemView.findViewById(R.id.hour);
-            capacity = itemView.findViewById(R.id.capacity);
-
+            total = itemView.findViewById(R.id.total);
         }
     }
 }

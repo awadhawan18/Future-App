@@ -2,18 +2,23 @@ package com.futureapp;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.ColorMatrix;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.design.card.MaterialCardView;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import top.defaults.drawabletoolbox.DrawableBuilder;
 
 public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder> {
     private ArrayList<PlantTab.Plant> plants;
@@ -35,10 +40,21 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         PlantTab.Plant plant = plants.get(position);
         holder.name.setText(plant.name);
-        holder.capacity.setText(plant.capacity);
+        holder.total.setText(String.valueOf(plant.total));
+        holder.renewable.setText(String.valueOf(plant.renewable));
+        holder.nonrenewable.setText(String.valueOf(plant.nonrenewable));
 
-        //holder.plant_card.setBackgroundColor(100);
-        holder.plant_view.setBackgroundColor(0xFF000000 + position*0xff110000);
+        Drawable drawable = new DrawableBuilder()
+                .rectangle()
+                .gradient()
+                .gradientType(GradientDrawable.)
+                .linearGradient()
+                .startColor(0xFF00FFFF)
+                .endColor(0xFFFF0000)
+                .ripple()
+                .build();
+
+        holder.plantView.setBackground(drawable);
     }
 
     @Override
@@ -48,16 +64,18 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView name;
-        private TextView capacity;
-        private MaterialCardView plant_card;
-        private LinearLayout plant_view;
+        TextView total, renewable, nonrenewable;
+        LinearLayout plantView;
+        MaterialCardView plantCard;
 
         MyViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.plant_name_text_view);
-            capacity = itemView.findViewById(R.id.plant_capacity_text_view);
-            plant_view = itemView.findViewById(R.id.plant_view);
-            plant_card = itemView.findViewById(R.id.plant_card);
+            total = itemView.findViewById(R.id.plant_capacity_text_view);
+            renewable = itemView.findViewById(R.id.plant_renewable);
+            nonrenewable = itemView.findViewById(R.id.plant_nonrenewable);
+            plantView = itemView.findViewById(R.id.plant_view);
+            plantCard = itemView.findViewById(R.id.plant_card);
         }
     }
 }
