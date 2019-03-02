@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/normal_padding">
+        android:padding="@dimen/normal_padding"
+        android:id="@+id/plant_view">
 
         <TextView
             android:id="@+id/plant_name_text_view"

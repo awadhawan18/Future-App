@@ -1,12 +1,15 @@
 package com.futureapp;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -31,6 +34,8 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         PlantTab.Plant plant = plants.get(position);
         holder.name.setText(plant.name);
         holder.capacity.setText(plant.capacity);
+
+        //holder.plant_view.setBackgroundColor(Integer.parseInt("ffff00", 16));
     }
 
     @Override
@@ -38,14 +43,16 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         return plants.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView name;
         private TextView capacity;
+        private LinearLayout plant_view;
 
-        public MyViewHolder(View itemView) {
+        MyViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.plant_name_text_view);
             capacity = itemView.findViewById(R.id.plant_capacity_text_view);
+            plant_view = itemView.findViewById(R.id.plant_view);
         }
     }
 }
