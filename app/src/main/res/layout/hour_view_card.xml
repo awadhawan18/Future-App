@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/small_padding"
-        android:background="@drawable/background_gradient"
+        android:background="@drawable/energy_gradient"
         android:orientation="horizontal">
 
         <TextView
