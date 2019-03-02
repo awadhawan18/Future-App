@@ -11,8 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -133,6 +142,8 @@ public class HourTab extends Fragment {
         hourValues.add(new HashMap<String, String>());
         hourValues.add(new HashMap<String, String>());
 
+        addLineChart();
+
         HourViewAdapter adapter = new HourViewAdapter(getContext(), hourValues);
         RecyclerView myView = getView().findViewById(R.id.hour_view_list);
         myView.setHasFixedSize(true);
@@ -140,5 +151,56 @@ public class HourTab extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         myView.setLayoutManager(llm);
+
+
+    }
+
+    private void addLineChart() {
+
+
+        List<Entry> valsComp1 = new ArrayList<>();
+        List<Entry> valsComp2 = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            Entry c1e1 = new Entry((float) i, 100000f * (i + 1) * (float) Math.pow(-1, i)); // 0 == quarter 1
+            valsComp1.add(c1e1);
+        }
+
+        LineDataSet setComp1 = new LineDataSet(valsComp1, "Company 1");
+        setComp1.setAxisDependency(YAxis.AxisDependency.LEFT);
+        setComp1.setValueTextColor(getResources().getColor(R.color.textPrimary));
+        setComp1.setColor(getResources().getColor(R.color.line_color));
+        setComp1.setCircleColor(getResources().getColor(R.color.line_color));
+        setComp1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        LineDataSet setComp2 = new LineDataSet(valsComp2, "Company 2");
+        setComp2.setAxisDependency(YAxis.AxisDependency.LEFT);
+        setComp2.setValueTextColor(getResources().getColor(R.color.textPrimary));
+
+        // use the interface ILineDataSet
+        List<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(setComp1);
+        dataSets.add(setComp2);
+
+        LineData data = new LineData(dataSets);
+        data.setValueTextColor(getResources().getColor(R.color.textPrimary));
+
+        LineChart mLineChart = getView().findViewById(R.id.line_chart);
+        mLineChart.setData(data);
+        mLineChart.getAxisLeft().setTextColor(getResources().getColor(R.color.textPrimary));
+        mLineChart.getAxisRight().setTextColor(getResources().getColor(R.color.textPrimary));
+        mLineChart.getXAxis().setTextColor(getResources().getColor(R.color.textPrimary));
+        mLineChart.getLegend().setTextColor(getResources().getColor(R.color.textPrimary));
+        mLineChart.animateY(2000);
+
+        Legend l = mLineChart.getLegend();
+        l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+        l.setForm(Legend.LegendForm.CIRCLE);
+        l.setOrientation(Legend.LegendOrientation.VERTICAL);
+        l.setDrawInside(true);
+        l.setTextSize(12f);
+        l.setTextColor(getResources().getColor(R.color.textPrimary));
+
+        mLineChart.invalidate(); // refresh
     }
 }

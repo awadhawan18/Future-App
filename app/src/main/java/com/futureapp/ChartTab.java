@@ -129,8 +129,6 @@ public class ChartTab extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         addPieChart();
-        addLineChart();
-
     }
 
     private void addPieChart() {
@@ -164,31 +162,6 @@ public class ChartTab extends Fragment {
         pieChart.invalidate();
     }
 
-    private void addLineChart() {
 
-
-        List<Entry> valsComp1 = new ArrayList<>();
-        List<Entry> valsComp2 = new ArrayList<>();
-
-        for (int i = 0; i < 10; i++) {
-            Entry c1e1 = new Entry((float) i, 100000f * (i + 1)); // 0 == quarter 1
-            valsComp1.add(c1e1);
-        }
-
-        LineDataSet setComp1 = new LineDataSet(valsComp1, "Company 1");
-        setComp1.setAxisDependency(YAxis.AxisDependency.LEFT);
-        LineDataSet setComp2 = new LineDataSet(valsComp2, "Company 2");
-        setComp2.setAxisDependency(YAxis.AxisDependency.LEFT);
-
-        // use the interface ILineDataSet
-        List<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
-        dataSets.add(setComp1);
-        dataSets.add(setComp2);
-
-        LineData data = new LineData(dataSets);
-        LineChart mLineChart = getView().findViewById(R.id.line_chart);
-        mLineChart.setData(data);
-        mLineChart.invalidate(); // refresh
-    }
 
 }

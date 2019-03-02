@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +25,16 @@ import static android.support.constraint.Constraints.TAG;
 
 public class MapTab extends Fragment implements OnMapReadyCallback {
     private GoogleMap mMap;
+    private String[] plantTitles = {
+            "Kurnool Ultra Mega Solar Park", "Kamuthi Solar Power Project",
+            "Pavagada Solar Park", "NP Kunta Ananthapur district Andhra Pradesh"
+    };
+    private LatLng[] plantLocations = {
+            new LatLng(15.681522, 78.283749),
+            new LatLng(9.3544, 78.384),
+            new LatLng(14.09694444, 77.27027778),
+            new LatLng(14.02, 78.43)
+    };
 
     public MapTab() {
         // Required empty public constructor
@@ -42,7 +51,6 @@ public class MapTab extends Fragment implements OnMapReadyCallback {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        // Not reached
         /*if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
@@ -116,14 +124,13 @@ public class MapTab extends Fragment implements OnMapReadyCallback {
         latlngs.add(new LatLng(12.9716, 77.5946));
         latlngs.add(new LatLng(22.5726, 88.3639));
 
-        for (LatLng point : latlngs) {
-            options.position(point);
-            options.title("someTitle");
-            options.snippet("someDesc");
+        for (int i = 0; i < plantLocations.length; i++) {
+            options.position(plantLocations[i]);
+            options.title(plantTitles[i]);
             mMap.addMarker(options);
         }
 
-        LatLng india = new LatLng(20.5937, 78.9629);
+        LatLng india = new LatLng(12.9716, 77.5946);
 
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(india, 5f));
 
