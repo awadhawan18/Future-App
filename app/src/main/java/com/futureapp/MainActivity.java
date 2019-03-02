@@ -1,6 +1,7 @@
 package com.futureapp;
 
 import android.app.DatePickerDialog;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -11,9 +12,11 @@ import android.view.MenuItem;
 import android.widget.DatePicker;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
+import androidx.annotation.DrawableRes;
 import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(3);
 
         //Initializing the tablayout
+        ArrayList resIds = getIconIds();
         tabLayout = findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -61,7 +65,18 @@ public class MainActivity extends AppCompatActivity {
         });
         setupViewPager(viewPager);
 
+        for (int i = 0; i < tabLayout.getTabCount(); i++)
+            tabLayout.getTabAt(i).setIcon((int) resIds.get(i));
+//            tabLayout.
+    }
 
+    private ArrayList<Integer> getIconIds(){
+        ArrayList resIds = new ArrayList<Integer>();
+        resIds.add(R.drawable.ic_battery);
+        resIds.add(R.drawable.ic_time);
+        resIds.add(R.drawable.ic_power_plant);
+        resIds.add(R.drawable.ic_marker);
+        return resIds;
     }
 
 
@@ -71,10 +86,10 @@ public class MainActivity extends AppCompatActivity {
         hourTab = new HourTab();
         plantTab = new PlantTab();
         mapTab = new MapTab();
-        adapter.addFragment(chartTab, "Capacity");
-        adapter.addFragment(hourTab, "Hour View");
-        adapter.addFragment(plantTab, "Plants");
-        adapter.addFragment(mapTab, "Map View");
+        adapter.addFragment(chartTab, "");//"Capacity");
+        adapter.addFragment(hourTab, "");//"Hour View");
+        adapter.addFragment(plantTab, "");//"Plants");
+        adapter.addFragment(mapTab, "");//"Map View");
 
         viewPager.setAdapter(adapter);
     }

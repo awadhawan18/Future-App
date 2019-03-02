@@ -36,9 +36,9 @@
         android:layout_below="@+id/appBar"
         android:layout_gravity="bottom"
         app:tabIndicatorColor="@color/colorPrimary"
-        app:tabTextColor="@color/textPrimary"
         app:tabGravity="fill"
         app:tabMode="fixed" />
+        <!--app:tabTextColor="@color/textPrimary"-->
 
 
 </android.support.design.widget.CoordinatorLayout>
