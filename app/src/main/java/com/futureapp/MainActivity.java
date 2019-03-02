@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Integer> getIconIds(){
         ArrayList resIds = new ArrayList<Integer>();
-        resIds.add(R.drawable.ic_battery);
+        resIds.add(R.drawable.ic_pie_chart);
         resIds.add(R.drawable.ic_time);
         resIds.add(R.drawable.ic_power_plant);
         resIds.add(R.drawable.ic_marker);
