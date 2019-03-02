@@ -23,8 +23,12 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent homeIntent = new Intent(SplashScreenActivity.this, FingerprintActivity.class);
-                startActivity(homeIntent);
+                PreferenceManager preferenceManager = new PreferenceManager(getApplicationContext());
+                if (preferenceManager.checkPreference()) {
+                    startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                } else {
+                    startActivity(new Intent(SplashScreenActivity.this, FingerprintActivity.class));
+                }
                 finish();
             }
         }, SPLASH_TIME_OUT);

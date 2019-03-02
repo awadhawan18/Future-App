@@ -10,6 +10,7 @@ import android.os.CancellationSignal;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
@@ -18,7 +19,6 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     private Context context;
 
 
-    // Constructor
     public FingerprintHandler(Context mContext) {
         context = mContext;
     }
@@ -54,6 +54,9 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
         this.update("Fingerprint Authentication succeeded.", true);
+        PreferenceManager preferenceManager = new PreferenceManager(context);
+        preferenceManager.writePreference();
+        Toast.makeText(context, "Successful Login", Toast.LENGTH_SHORT).show();
         context.startActivity(new Intent(context, MainActivity.class));
     }
 

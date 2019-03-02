@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
@@ -137,6 +138,8 @@ public class ChartTab extends Fragment {
         pieChart.setDrawEntryLabels(true);
         pieChart.getDescription().setText("Total Capacity");
         pieChart.setData(data);
+        pieChart.setDrawHoleEnabled(true);
+        pieChart.setHoleColor(getResources().getColor(R.color.colorAccent));
 
         Legend l = pieChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
@@ -145,6 +148,7 @@ public class ChartTab extends Fragment {
         l.setOrientation(Legend.LegendOrientation.VERTICAL);
         l.setDrawInside(true);
         l.setTextSize(12f);
+        l.setTextColor(getResources().getColor(R.color.textPrimary));
 
         pieChart.invalidate();
     }
