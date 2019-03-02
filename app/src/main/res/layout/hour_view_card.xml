@@ -5,53 +5,37 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/small_padding">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/small_padding"
         android:background="@drawable/background_gradient"
-        android:orientation="horizontal">
+        android:layout_margin="@dimen/very_small_margin">
 
         <TextView
             android:id="@+id/hour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/card_view_text"
-            android:text="2-3"
-            android:textColor="@android:color/white"
-            app:fontFamily="@font/amiko_semibold" />
-
-        <TextView
-            android:id="@+id/meridian"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:padding="@dimen/small_padding"
-            android:text="PM"
+            android:text="2-3 PM"
             android:textColor="@android:color/white"
+            android:textSize="@dimen/card_view_text"
             app:fontFamily="@font/amiko_semibold" />
 
         <TextView
             android:id="@+id/capacity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/small_padding"
-            android:textAlignment="viewEnd"
-            android:text="100"
-            android:textSize="@dimen/card_view_text"
-            android:textColor="@android:color/white"
-            app:fontFamily="@font/amiko_semibold" />
-
-        <TextView
-            android:id="@+id/power_unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:padding="@dimen/small_padding"
-            android:text="MW"
+            android:text="100 MW"
             android:textColor="@android:color/white"
+            android:textSize="@dimen/card_view_text"
             app:fontFamily="@font/amiko_semibold" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </android.support.design.card.MaterialCardView>
