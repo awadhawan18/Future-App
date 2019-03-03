@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_vertical"
-            android:padding="@dimen/normal_padding">
+            android:padding="@dimen/large_margin">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,6 +53,7 @@
                     android:textSize="30sp"
                     app:fontFamily="@font/amiko_semibold"
                     android:textColor="@android:color/white"
+                    android:contentDescription="plant name"
                     tools:ignore="Suspicious0dp" />
 
                 <TextView
@@ -62,8 +63,9 @@
                     android:textAlignment="viewEnd"
                     android:textSize="30sp"
                     android:layout_weight="1"
+                    android:textColor="#dddddddd"
+                    android:contentDescription="total generation"
                     app:fontFamily="@font/amiko_semibold"
-                    android:textColor="@color/textPrimary"
                     tools:ignore="Suspicious0dp" />
 
             </LinearLayout>
@@ -78,8 +80,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
+                    android:contentDescription="renewable power"
                     app:fontFamily="@font/amiko_semibold"
-                    android:textColor="@color/textPrimary"
+                    android:textColor="#dddddddd"
                     tools:ignore="Suspicious0dp" />
 
                 <TextView
@@ -88,9 +91,10 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="viewEnd"
                     android:layout_weight="1"
+                    android:contentDescription="nonrenewable power"
                     android:textSize="20sp"
                     app:fontFamily="@font/amiko_semibold"
-                    android:textColor="@color/textPrimary"
+                    android:textColor="#dddddddd"
                     tools:ignore="Suspicious0dp" />
 
             </LinearLayout>
