@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -117,7 +119,12 @@ public class HourTab extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        hourValues = new ArrayList<>();
+        WebView myWebView = getView().findViewById(R.id.producers_webview);
+        myWebView.loadUrl("http://ipiyush.com/wiso2/producers.html");
+        WebSettings webSettings = myWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        /*hourValues = new ArrayList<>();
         hourValues.add(new HashMap<String, String>());
         hourValues.add(new HashMap<String, String>());
         hourValues.add(new HashMap<String, String>());
@@ -140,10 +147,10 @@ public class HourTab extends Fragment {
         myView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        myView.setLayoutManager(llm);
+        myView.setLayoutManager(llm);*/
     }
 
-    private void addLineChart() {
+    /*private void addLineChart() {
         List<Entry> valsComp1 = new ArrayList<>();
         List<Entry> valsComp2 = new ArrayList<>();
 
@@ -188,5 +195,5 @@ public class HourTab extends Fragment {
         l.setTextColor(getResources().getColor(R.color.textPrimary));
 
         mLineChart.invalidate(); // refresh
-    }
+    }*/
 }

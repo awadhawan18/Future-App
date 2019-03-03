@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
-import androidx.annotation.DrawableRes;
 import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
@@ -74,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
         ArrayList resIds = new ArrayList<Integer>();
         resIds.add(R.drawable.ic_pie_chart);
         resIds.add(R.drawable.ic_time);
-        resIds.add(R.drawable.ic_power_plant);
         resIds.add(R.drawable.ic_marker);
+        resIds.add(R.drawable.ic_power_plant);
         return resIds;
     }
 
@@ -88,8 +87,9 @@ public class MainActivity extends AppCompatActivity {
         mapTab = new MapTab();
         adapter.addFragment(chartTab, "");//"Capacity");
         adapter.addFragment(hourTab, "");//"Hour View");
-        adapter.addFragment(plantTab, "");//"Plants");
         adapter.addFragment(mapTab, "");//"Map View");
+        adapter.addFragment(plantTab, "");//"Plants");
+
 
         viewPager.setAdapter(adapter);
     }
