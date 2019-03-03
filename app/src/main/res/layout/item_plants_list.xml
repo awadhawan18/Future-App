@@ -1,35 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/plant_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/normal_padding">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/normal_padding"
-        android:id="@+id/plant_view">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/plant_name_text_view"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/background_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/image_renewable"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_renewable"
+                tools:ignore="ContentDescription,Suspicious0dp" />
+
+            <ImageView
+                android:id="@+id/image_nonrenewable"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_nonrenewable"
+                tools:ignore="ContentDescription,Suspicious0dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/plant_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:textColor="@android:color/white"
-            app:fontFamily="@font/amiko_semibold" />
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_padding">
 
-        <TextView
-            android:id="@+id/plant_capacity_text_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="viewEnd"
-            android:textSize="30sp"
-            android:textColor="@android:color/white"
-            app:fontFamily="@font/amiko_semibold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/plant_name_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    app:fontFamily="@font/amiko_semibold"
+                    android:textColor="@android:color/white"
+                    tools:ignore="Suspicious0dp" />
+
+                <TextView
+                    android:id="@+id/plant_capacity_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewEnd"
+                    android:textSize="30sp"
+                    android:layout_weight="1"
+                    app:fontFamily="@font/amiko_semibold"
+                    android:textColor="@android:color/white"
+                    tools:ignore="Suspicious0dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/plant_renewable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    app:fontFamily="@font/amiko_semibold"
+                    android:textColor="@android:color/white"
+                    tools:ignore="Suspicious0dp" />
+
+                <TextView
+                    android:id="@+id/plant_nonrenewable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewEnd"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    app:fontFamily="@font/amiko_semibold"
+                    android:textColor="@android:color/white"
+                    tools:ignore="Suspicious0dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </android.support.design.card.MaterialCardView>
