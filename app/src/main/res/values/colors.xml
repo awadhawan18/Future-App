@@ -9,5 +9,6 @@
     <color name="textPrimary">#f5f5f5</color>
     <color name="textPrimaryDark">#ff95aab4</color>
     <color name="errorText">#ff7878</color>
+    <color name="splash_screen_background">#F7F7F7</color>
 
 </resources>

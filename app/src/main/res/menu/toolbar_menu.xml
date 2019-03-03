@@ -6,6 +6,7 @@
         android:id="@+id/toolbar_calender"
         android:orderInCategory="1"
         android:title="Today"
+        android:visible="false"
         app:showAsAction="ifRoom" />
 
 </menu>

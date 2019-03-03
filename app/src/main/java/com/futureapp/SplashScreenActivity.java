@@ -25,7 +25,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 PreferenceManager preferenceManager = new PreferenceManager(getApplicationContext());
                 if (preferenceManager.checkPreference()) {
-                    startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                    startActivity(new Intent(SplashScreenActivity.this, StatesList.class));
                 } else {
                     startActivity(new Intent(SplashScreenActivity.this, FingerprintActivity.class));
                 }
