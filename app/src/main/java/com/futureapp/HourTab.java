@@ -1,6 +1,7 @@
 package com.futureapp;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -20,21 +22,40 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.TileOverlay;
+import com.google.android.gms.maps.model.TileOverlayOptions;
+import com.google.maps.android.heatmaps.HeatmapTileProvider;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
+
+import timber.log.Timber;
+
+import static android.support.constraint.Constraints.TAG;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link HourTab.OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link HourTab#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HourTab extends Fragment {
+public class HourTab extends Fragment implements OnMapReadyCallback {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -43,7 +64,11 @@ public class HourTab extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private GoogleMap mMap;
+    private HeatmapTileProvider mProvider;
+    private TileOverlay mOverlay;
+
+    //private OnFragmentInteractionListener mListener;
 
     private ArrayList<HashMap<String, String>> hourValues;
 
@@ -77,11 +102,11 @@ public class HourTab extends Fragment {
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    /*public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
-    }
+    }*/
 
     @Override
     public void onAttach(Context context) {
@@ -97,8 +122,88 @@ public class HourTab extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        // Not reached
+
+        try {
+            // Customise the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            boolean success = googleMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            getActivity().getApplicationContext(), R.raw.style_json));
+
+            if (!success) {
+                Timber.i(TAG + "Style parsing failed.");
+            }
+        } catch (Resources.NotFoundException e) {
+            Timber.i(TAG + "Can't find style. Error: " + e);
+        }
+
+        Timber.i("mMap = " + mMap);
+        mMap = googleMap;
+        // Move the camera to India.
+        /*LatLng india = new LatLng(28.7, 78.9);
+        googleMap.addMarker(new MarkerOptions().position(india)
+                .title("Marker in India"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(india));*/
+
+       /* Marker m1 = googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(38.609556, -1.139637))
+                .anchor(0.5f, 0.5f)
+                .title("Title1")
+                .snippet("Snippet1"));
+                //.icon(BitmapDescriptorFactory.fromResource(R.drawable.logo1)));
+
+
+        Marker m2 = googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(40.4272414,-3.7020037))
+                .anchor(0.5f, 0.5f)
+                .title("Title2")
+                .snippet("Snippet2"));
+                //.icon(BitmapDescriptorFactory.fromResource(R.drawable.logo2)));
+
+
+        Marker m3 = googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(43.2568193,-2.9225534))
+                .anchor(0.5f, 0.5f)
+                .title("Title3")
+                .snippet("Snippet3"));
+                //.icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));*/
+
+        MarkerOptions options = new MarkerOptions();
+        ArrayList<LatLng> latlngs = new ArrayList<>();
+
+        /*latlngs.add(new LatLng(28.7041, 77.1025));
+        latlngs.add(new LatLng(19.0760, 72.8777));
+        latlngs.add(new LatLng(12.9716, 77.5946));
+        latlngs.add(new LatLng(22.5726, 88.3639));*/
+
+        List<LatLng> list = null;
+
+        // Get the data: latitude/longitude positions of police stations.
+        try {
+            list = readItems(R.raw.heat_maps);
+        } catch (JSONException e) {
+            Toast.makeText(getContext(), "Problem reading list of locations.", Toast.LENGTH_LONG).show();
+        }
+
+        // Create a heat map tile provider, passing it the latlngs of the police stations.
+        mProvider = new HeatmapTileProvider.Builder()
+                .data(list)
+                .build();
+        // Add a tile overlay to the map, using the heat map tile provider.
+        mOverlay = mMap.addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
+
+        LatLng india = new LatLng(12.9716, 77.5946);
+
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(india, 5f));
+
+
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this
@@ -110,18 +215,23 @@ public class HourTab extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    /*public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-    }
+    }*/
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-/*
-        WebView myWebView = getView().findViewById(R.id.producers_webview);
-        myWebView.loadUrl("http://ipiyush.com/wiso2/producers.html");
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.heat_map);
+        mapFragment.getMapAsync(this);
+        addHeatMap();
+        /*WebView myWebView = getView().findViewById(R.id.producers_webview);
+        myWebView.loadUrl("http://ipiyush.com/wiso2/producers");
         WebSettings webSettings = myWebView.getSettings();
+        myWebView.getSettings().setBuiltInZoomControls(true);
+        myWebView.getSettings().setSupportZoom(true);
         webSettings.setJavaScriptEnabled(true);*/
 
         /*hourValues = new ArrayList<>();
@@ -196,4 +306,23 @@ public class HourTab extends Fragment {
 
         mLineChart.invalidate(); // refresh
     }*/
+
+    private void addHeatMap() {
+
+    }
+
+    private ArrayList<LatLng> readItems(int resource) throws JSONException {
+        ArrayList<LatLng> list = new ArrayList<LatLng>();
+        InputStream inputStream = getResources().openRawResource(resource);
+        String json = new Scanner(inputStream).useDelimiter("\\A").next();
+        JSONArray array = new JSONArray(json);
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            double lat = object.getDouble("lat");
+            double lng = object.getDouble("lng");
+            list.add(new LatLng(lat, lng));
+        }
+        return list;
+    }
+
 }

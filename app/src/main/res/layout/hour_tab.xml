@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/heat_map"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_marginTop="@dimen/very_large_margin"
     android:layout_marginBottom="?attr/actionBarSize"
     tools:context=".HourTab">
@@ -42,9 +44,9 @@
     </LinearLayout>-->
 
 
-    <WebView
+    <!--<WebView
         android:id="@+id/producers_webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" />-->
 
-</android.support.v4.widget.NestedScrollView>
+</fragment>
