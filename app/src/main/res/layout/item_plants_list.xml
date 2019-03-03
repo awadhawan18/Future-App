@@ -63,7 +63,7 @@
                     android:textSize="30sp"
                     android:layout_weight="1"
                     app:fontFamily="@font/amiko_semibold"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/textPrimary"
                     tools:ignore="Suspicious0dp" />
 
             </LinearLayout>
@@ -79,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     app:fontFamily="@font/amiko_semibold"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/textPrimary"
                     tools:ignore="Suspicious0dp" />
 
                 <TextView
@@ -90,7 +90,7 @@
                     android:layout_weight="1"
                     android:textSize="20sp"
                     app:fontFamily="@font/amiko_semibold"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/textPrimary"
                     tools:ignore="Suspicious0dp" />
 
             </LinearLayout>
