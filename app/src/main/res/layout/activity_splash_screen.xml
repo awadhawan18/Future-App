@@ -16,7 +16,7 @@
         android:layout_gravity="center_horizontal"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        android:foreground="@android:color/white" />
+        android:foreground="@color/splash_screen_background" />
 
     <ImageView
         android:id="@+id/appLogo"
