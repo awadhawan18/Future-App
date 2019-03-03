@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".StatesList"
-    android:background="@color/colorAccent">
+    android:background="@color/colorAccent"
+    android:gravity="center_vertical">
 
     <android.support.design.card.MaterialCardView
         android:id="@+id/tamil_nadu"
