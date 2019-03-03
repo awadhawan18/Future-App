@@ -45,12 +45,12 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0,
                 200, (float) plant.renewable/plant.total);
         holder.image_renewable.setLayoutParams(params);
-        holder.image_renewable.setImageResource(R.drawable.gradient_renewable);
+        holder.image_renewable.setImageResource(R.drawable.bg_renewable);
 
         params = new LinearLayout.LayoutParams(0,
                 200, (float) plant.nonrenewable/plant.total);
         holder.image_nonrenewable.setLayoutParams(params);
-        holder.image_nonrenewable.setImageResource(R.drawable.gradient_nonrenewable);
+        holder.image_nonrenewable.setImageResource(R.drawable.bg_nonrenewable);
 
 //        android:type="linear"
 //        android:startColor="@color/green"
