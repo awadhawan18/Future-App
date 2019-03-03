@@ -53,7 +53,7 @@
                     android:textSize="30sp"
                     app:fontFamily="@font/amiko_semibold"
                     android:textColor="@android:color/white"
-                    android:contentDescription="plant name"
+                    android:contentDescription="@string/plant_name"
                     tools:ignore="Suspicious0dp" />
 
                 <TextView
@@ -64,7 +64,7 @@
                     android:textSize="30sp"
                     android:layout_weight="1"
                     android:textColor="#dddddddd"
-                    android:contentDescription="total generation"
+                    android:contentDescription="@string/total_generation"
                     app:fontFamily="@font/amiko_semibold"
                     tools:ignore="Suspicious0dp" />
 
@@ -80,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:contentDescription="renewable power"
+                    android:contentDescription="@string/renewable_power"
                     app:fontFamily="@font/amiko_semibold"
                     android:textColor="#dddddddd"
                     tools:ignore="Suspicious0dp" />
@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="viewEnd"
                     android:layout_weight="1"
-                    android:contentDescription="nonrenewable power"
+                    android:contentDescription="@string/nonrenewable_power"
                     android:textSize="20sp"
                     app:fontFamily="@font/amiko_semibold"
                     android:textColor="#dddddddd"
