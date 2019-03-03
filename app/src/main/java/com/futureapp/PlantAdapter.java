@@ -20,7 +20,7 @@ import top.defaults.drawabletoolbox.DrawableBuilder;
 
 public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder> {
     private ArrayList<PlantTab.Plant> plants;
-    Context mContext;
+    private Context mContext;
 
     PlantAdapter(Context mContext, ArrayList<PlantTab.Plant> plants) {
         this.plants = plants;
@@ -43,12 +43,12 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         holder.nonrenewable.setText(String.valueOf(plant.nonrenewable));
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0,
-                200, (float) plant.renewable/plant.total);
+                222, (float) plant.renewable/plant.total);
         holder.image_renewable.setLayoutParams(params);
         holder.image_renewable.setImageResource(R.drawable.bg_renewable);
 
         params = new LinearLayout.LayoutParams(0,
-                200, (float) plant.nonrenewable/plant.total);
+                222, (float) plant.nonrenewable/plant.total);
         holder.image_nonrenewable.setLayoutParams(params);
         holder.image_nonrenewable.setImageResource(R.drawable.bg_nonrenewable);
 
