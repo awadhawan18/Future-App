@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Integer> getIconIds(){
         ArrayList resIds = new ArrayList<Integer>();
         resIds.add(R.drawable.ic_pie_chart);
-        resIds.add(R.drawable.ic_time);
         resIds.add(R.drawable.ic_marker);
+        resIds.add(R.drawable.ic_time);
         resIds.add(R.drawable.ic_power_plant);
         return resIds;
     }
@@ -86,10 +86,9 @@ public class MainActivity extends AppCompatActivity {
         plantTab = new PlantTab();
         mapTab = new MapTab();
         adapter.addFragment(chartTab, "");//"Capacity");
-        adapter.addFragment(hourTab, "");//"Hour View");
         adapter.addFragment(mapTab, "");//"Map View");
+        adapter.addFragment(hourTab, "");//"Hour View");
         adapter.addFragment(plantTab, "");//"Plants");
-
 
         viewPager.setAdapter(adapter);
     }

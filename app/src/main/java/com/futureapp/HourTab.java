@@ -118,11 +118,11 @@ public class HourTab extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+/*
         WebView myWebView = getView().findViewById(R.id.producers_webview);
         myWebView.loadUrl("http://ipiyush.com/wiso2/producers.html");
         WebSettings webSettings = myWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
+        webSettings.setJavaScriptEnabled(true);*/
 
         /*hourValues = new ArrayList<>();
         hourValues.add(new HashMap<String, String>());
