@@ -21,14 +21,14 @@
                 android:id="@+id/image_renewable"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/gradient_renewable"
+                android:background="@drawable/bg_renewable"
                 tools:ignore="ContentDescription,Suspicious0dp" />
 
             <ImageView
                 android:id="@+id/image_nonrenewable"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/gradient_nonrenewable"
+                android:background="@drawable/bg_nonrenewable"
                 tools:ignore="ContentDescription,Suspicious0dp" />
 
         </LinearLayout>
