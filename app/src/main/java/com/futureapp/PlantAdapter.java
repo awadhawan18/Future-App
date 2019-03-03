@@ -51,12 +51,6 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
                 222, (float) plant.nonrenewable/plant.total);
         holder.image_nonrenewable.setLayoutParams(params);
         holder.image_nonrenewable.setImageResource(R.drawable.bg_nonrenewable);
-
-//        android:type="linear"
-//        android:startColor="@color/green"
-//        android:endColor="@color/red"
-//        android:centerColor="@color/colorPrimaryDark"
-//        android:centerX="0.5"
     }
 
     @Override
