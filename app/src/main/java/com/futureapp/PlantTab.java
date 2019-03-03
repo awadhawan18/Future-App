@@ -102,19 +102,22 @@ public class PlantTab extends Fragment {
 
     private ArrayList<Plant> setList() {
         ArrayList<Plant> plants = new ArrayList<>();
-        plants.add(new Plant("plant 1", "500"));
-        plants.add(new Plant("plant 2", "100"));
-        plants.add(new Plant("plant 3", "1000"));
-        plants.add(new Plant("plant 4", "700"));
+        plants.add(new Plant("plant 1", 200, 300));
+        plants.add(new Plant("plant 2", 100, 0));
+        plants.add(new Plant("plant 3", 300, 600));
+        plants.add(new Plant("plant 4", 200, 300));
         return plants;
     }
 
     class Plant {
-        String name, capacity;
+        String name;
+        int total, renewable, nonrenewable;
 
-        Plant(String name, String capacity){
+        Plant(String name, int renewable, int nonrenewable){
             this.name = name;
-            this.capacity = capacity;
+            this.total = renewable + nonrenewable;
+            this.renewable = renewable;
+            this.nonrenewable = nonrenewable;
         }
     }
 }

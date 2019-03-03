@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/normal_padding"
-        android:background="@drawable/energy_gradient"
+        android:background="@drawable/gradient_energy"
         android:orientation="horizontal">
 
         <TextView
@@ -31,7 +31,7 @@
             app:fontFamily="@font/amiko_semibold" />
 
         <TextView
-            android:id="@+id/capacity"
+            android:id="@+id/total"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
