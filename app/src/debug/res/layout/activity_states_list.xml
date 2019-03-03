@@ -25,7 +25,7 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tamil Nadu"
+                android:text="Southern Grid"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/card_view_text"
                 app:fontFamily="@font/amiko_semibold" />
@@ -52,7 +52,7 @@
                 android:id="@+id/maharashtra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Maharashtra"
+                android:text="Northern Grid"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/card_view_text"
                 app:fontFamily="@font/amiko_semibold" />
@@ -79,7 +79,7 @@
                 android:id="@+id/kerala"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kerala"
+                android:text="Eastern Grid"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/card_view_text"
                 app:fontFamily="@font/amiko_semibold" />
@@ -106,7 +106,7 @@
                 android:id="@+id/karnataka"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Karnataka"
+                android:text="Western Grid"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/card_view_text"
                 app:fontFamily="@font/amiko_semibold" />
@@ -133,7 +133,7 @@
                 android:id="@+id/hydrabad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hydrabad"
+                android:text="Northern Eastern Grid"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/card_view_text"
                 app:fontFamily="@font/amiko_semibold" />

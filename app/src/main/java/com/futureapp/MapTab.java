@@ -123,6 +123,9 @@ public class MapTab extends Fragment implements OnMapReadyCallback {
         latlngs.add(new LatLng(19.0760, 72.8777));
         latlngs.add(new LatLng(12.9716, 77.5946));
         latlngs.add(new LatLng(22.5726, 88.3639));
+        latlngs.add(new LatLng(8.2649025, 77.5667683));
+        latlngs.add(new LatLng(13.9493984, 76.0465579));
+        latlngs.add(new LatLng(17.1171577, 74.9861709));
 
         for (int i = 0; i < plantLocations.length; i++) {
             options.position(plantLocations[i]);

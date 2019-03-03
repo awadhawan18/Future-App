@@ -26,8 +26,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.gms.maps.model.TileOverlayOptions;
@@ -150,33 +152,33 @@ public class HourTab extends Fragment implements OnMapReadyCallback {
                 .title("Marker in India"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(india));*/
 
-       /* Marker m1 = googleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(38.609556, -1.139637))
+        /*Marker m1 = googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(8.2649025,77.5667683))
                 .anchor(0.5f, 0.5f)
-                .title("Title1")
-                .snippet("Snippet1"));
-                //.icon(BitmapDescriptorFactory.fromResource(R.drawable.logo1)));
+                //.title("Title1")
+                //.snippet("Snippet1")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.wind_icon)));
 
 
         Marker m2 = googleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(40.4272414,-3.7020037))
+                .position(new LatLng(13.9493984,76.0465579))
                 .anchor(0.5f, 0.5f)
-                .title("Title2")
-                .snippet("Snippet2"));
-                //.icon(BitmapDescriptorFactory.fromResource(R.drawable.logo2)));
+                //.title("Title2")
+                //.snippet("Snippet2")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.wind_icon)));
 
 
         Marker m3 = googleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(43.2568193,-2.9225534))
+                .position(new LatLng(17.1171577,74.9861709))
                 .anchor(0.5f, 0.5f)
-                .title("Title3")
-                .snippet("Snippet3"));
-                //.icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));*/
+                //.title("Title3")
+                //.snippet("Snippet3")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.wind_icon)));*/
 
-        MarkerOptions options = new MarkerOptions();
+        /*MarkerOptions options = new MarkerOptions();
         ArrayList<LatLng> latlngs = new ArrayList<>();
 
-        /*latlngs.add(new LatLng(28.7041, 77.1025));
+        latlngs.add(new LatLng(28.7041, 77.1025));
         latlngs.add(new LatLng(19.0760, 72.8777));
         latlngs.add(new LatLng(12.9716, 77.5946));
         latlngs.add(new LatLng(22.5726, 88.3639));*/
