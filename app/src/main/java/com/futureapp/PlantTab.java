@@ -102,10 +102,11 @@ public class PlantTab extends Fragment {
 
     private ArrayList<Plant> setList() {
         ArrayList<Plant> plants = new ArrayList<>();
-        plants.add(new Plant("plant 1", 200, 300));
-        plants.add(new Plant("plant 2", 100, 0));
-        plants.add(new Plant("plant 3", 300, 600));
-        plants.add(new Plant("plant 4", 200, 300));
+        plants.add(new Plant("grid 1", 200, 300));
+        plants.add(new Plant("grid 2", 100, 0));
+        plants.add(new Plant("grid 3", 300, 600));
+        plants.add(new Plant("grid 4", 200, 300));
+        plants.add(new Plant("grid 5", 100, 400));
         return plants;
     }
 

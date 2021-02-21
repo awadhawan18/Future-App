@@ -12,4 +12,8 @@
     <string name="activity_home_note">Close and re-open the app to see the fingerprint auth screen again</string>
 
     <string name="login"></string>
+    <string name="plant_name">plant name</string>
+    <string name="total_generation">total generation</string>
+    <string name="renewable_power">renewable power</string>
+    <string name="nonrenewable_power">nonrenewable power</string>
 </resources>
